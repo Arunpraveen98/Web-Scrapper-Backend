@@ -7,7 +7,7 @@ app.use(express.json());
 const cors = require("cors");
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.CLIENT_URL,
   })
 );
 // -----------------------------------------
@@ -33,12 +33,12 @@ const { Scrape_Flipkart } = require("./Data_scrapper/Flipkart_data");
 app.post("/Flipkart_Products", async (req, res) => {
   try {
     const query_value = req.query.name;
-    console.log(query_value);
+    // console.log(query_value);
     const products_details = await Scrape_Flipkart(
       `https://www.flipkart.com/search?q=${query_value}`
     );
     const Insert_Flipkart_data = products_details.slice(0, 10);
-    console.log(Insert_Flipkart_data);
+    // console.log(Insert_Flipkart_data);
 
     //? 1) Connect MongoDB :-
     const connection = await mongoclient.connect(URL);
@@ -69,13 +69,13 @@ app.post("/Flipkart_Products", async (req, res) => {
 app.post("/Amazon_Products", async (req, res) => {
   try {
     const query_value = req.query.name;
-    console.log(query_value);
+    // console.log(query_value);
 
     const products_details = await Scrape_Amazon(
       `https://www.amazon.com/s?k=${query_value}&i=mobile`
     );
     const Insert_Amazon_data = products_details.slice(0, 10);
-    console.log(Insert_Amazon_data);
+    // console.log(Insert_Amazon_data);
 
     //? 1) Connect MongoDB :-
     const connection = await mongoclient.connect(URL);
@@ -107,12 +107,12 @@ app.post("/Amazon_Products", async (req, res) => {
 app.post("/Snapdeal_Products", async (req, res) => {
   try {
     const query_value = req.query.name;
-    console.log(query_value);
+    // console.log(query_value);
     const products_details = await Scrape_Snapdeal(
       `https://www.snapdeal.com/search?keyword=${query_value}&sort=rlvncy`
     );
     const Insert_Snapdeal_Products = products_details.slice(0, 10);
-    console.log(Insert_Snapdeal_Products);
+    // console.log(Insert_Snapdeal_Products);
 
     //? 1) Connect MongoDB :-
     const connection = await mongoclient.connect(URL);
@@ -143,7 +143,7 @@ app.post("/Snapdeal_Products", async (req, res) => {
 app.get("/Flipkart_Products_List", async (req, res) => {
   try {
     const query_value = req.query.name;
-    console.log(query_value);
+    // console.log(query_value);
     //? 1) Connect MongoDB :-
     const connection = await mongoclient.connect(URL);
     //--------------------------------------
@@ -179,7 +179,7 @@ app.get("/Flipkart_Products_List", async (req, res) => {
 app.get("/Snapdeal_Products_List", async (req, res) => {
   try {
     const query_value = req.query.name;
-    console.log(query_value);
+    // console.log(query_value);
     //? 1) Connect MongoDB :-
     const connection = await mongoclient.connect(URL);
     //--------------------------------------
@@ -216,7 +216,7 @@ app.get("/Snapdeal_Products_List", async (req, res) => {
 app.get("/Amazon_Products_List", async (req, res) => {
   try {
     const query_value = req.query.name;
-    console.log(query_value);
+    // console.log(query_value);
     //? 1) Connect MongoDB :-
     const connection = await mongoclient.connect(URL);
     //--------------------------------------

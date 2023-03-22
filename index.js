@@ -1,7 +1,10 @@
 //? express package...
 const express = require("express");
 const app = express();
-app.use(express.json());
+const dotenv = require("dotenv").config();
+const mongodb = require("mongodb");
+//? PORT NUMBER...
+const PORT = process.env.PORT || 8000;
 // -----------------------------------------
 //? cors package...
 const cors = require("cors");
@@ -10,14 +13,10 @@ app.use(
     origin: process.env.CLIENT_URL,
   })
 );
-// -----------------------------------------
-const dotenv = require("dotenv").config();
-// -----------------------------------------
-//? PORT NUMBER...
-const PORT = process.env.PORT || 8000;
+app.use(express.json());
 // -----------------------------------------
 //? MONGODB package...
-const mongodb = require("mongodb");
+
 const mongoclient = mongodb.MongoClient;
 const URL = process.env.MONGO_DB_URL;
 // --------------------------------------------------------------------------------------------

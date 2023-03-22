@@ -18,7 +18,6 @@ async function Scrape_Snapdeal(SNAPDEAL) {
           //? Extract the product name...
 
           product.title = $(element).find("p.product-title").text();
-          product.value = ["nokia", "noki", "nokia mobiles"];
           // -----------------------------------------
           // //? Extract the product price...
           product.price = $(element)

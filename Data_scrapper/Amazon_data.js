@@ -25,8 +25,6 @@ async function Scrape_Amazon(AMAZON) {
           .find("h2.a-size-mini.a-spacing-none.a-color-base.s-line-clamp-2")
           .text();
         // -----------------------------------------
-        product.value = ["nokia", "noki", "nokia mobiles"];
-        // -----------------------------------------
         product.price = $(element).find("span.a-price-whole").first().text();
         // -----------------------------------------
         product.image = $(element).find("img.s-image").attr("src");

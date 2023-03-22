@@ -17,7 +17,6 @@ async function Scrape_Flipkart(FLIPKART) {
         // -----------------------------------------
         //? Extract the product name...
         product.title = $(element).find("div._4rR01T").text();
-        product.value = ["nokia", "noki", "nokia mobiles"];
         // -----------------------------------------
         //? Extract the product price...
         product.finalPriceWithOffer = $(element)

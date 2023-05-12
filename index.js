@@ -36,7 +36,10 @@ const { Scrape_Amazon } = require("./Data_scrapper/Amazon_data");
 
 const { Scrape_Flipkart } = require("./Data_scrapper/Flipkart_data");
 // ---------------------------------------------------------------------------------------
-
+app.get("/", async (req, res) => {
+  res.send("🤷‍♂️Welcome to Web Scrapper!");
+});
+// -------------------------------------------------------------
 //? POST_FLIPKART_DATA ...
 app.post("/Flipkart_Products", async (req, res) => {
   try {
